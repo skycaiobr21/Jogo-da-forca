@@ -1,12 +1,9 @@
 import random
+
 tentativas = 10
 
 print("----------------------------")
 
-tema = ["programação", "jogos", "marcas"]
-tema = random.choice(tema)
-
-print(f"Tema escolhido: {tema}")
 
 jogos = [
     "minecraft", "roblox", "fortnite", "valorant", "csgo",
@@ -21,90 +18,68 @@ jogos = [
     "batman arkham", "spider man", "god of war", "halo infinite", "halo"
 ]
 
-jogo = random.choice(jogos)
-
-mascarada = "*" * len(jogo)
-
-print(mascarada)
-
-while tentativas > 0:
-    digitar = input("Digite a palavra: ")
-
-    if digitar == jogo:
-        print("Parabéns Você ganhou! 🎉")
-        break
-    else:
-        tentativas -= 1
-        print(f"Errado Restam {tentativas} chances!")
-
-if tentativas == 0:
-    print(f"Você perdeu A palavra era: {jogo}")
-
 marcas = [
     "nike", "adidas", "puma", "reebok", "vans",
     "apple", "samsung", "xiaomi", "motorola", "huawei",
     "google", "microsoft", "amazon", "netflix", "spotify",
     "intel", "amd", "nvidia", "asus", "dell",
-    "hp", "lenovo", "logitech", "corsair", "razer",
-    "gucci", "prada", "chanel", "louisvuitton", "versace",
-    "zara", "h&m", "uniqlo", "lacoste", "tommyhilfiger",
-    "bmw", "audi", "mercedes", "tesla", "toyota",
-    "honda", "ford", "chevrolet", "ferrari", "lamborghini",
-    "cocacola", "pepsi", "nestle", "mcdonalds", "burgerking"
+    "hp", "lenovo", "logitech", "corsair", "razer"
 ]
 
-marca = random.choice(marcas)
-
-mascarada = "*" * len(marca)
-
-print(mascarada)
-
-while tentativas > 0:
-    digitar = input("Digite a palavra: ")
-
-    if digitar == marca:
-        print("Parabéns Você ganhou! 🎉")
-        break
-    else:
-        tentativas -= 1
-        print(f"Errado Restam {tentativas} chances!")
-
-if tentativas == 0:
-    print(f"Você perdeu A palavra era: {marca}")
-
-
-print("----------------------------")
-
 programação = [
-    "código",
-    "pixel", "algoritmo",
+    "código", "pixel", "algoritmo",
     "programação", "computador", "internet", "teclado", "mouse",
     "servidor", "nuvem", "robô", "inteligência", "dados",
     "python", "javascript", "desenvolvedor", "bug", "debug",
     "hardware", "software", "rede", "sistema", "arquivo",
-    "terminal", "console", "jogo", "forca", "vitória",
-    "derrota", "códigofonte", "variável", "função", "loop",
-    "condição", "biblioteca", "framework", "api", "git"
+    "terminal", "console", "jogo", "forca", "vitória"
 ]
 
-programa = random.choice(programação)
+temas = {
+    "jogos": jogos,
+    "marcas": marcas,
+    "programação": programação
+}
 
-mascarada = "*" * len(programa)
+tema = random.choice(list(temas.keys()))
+palavra = random.choice(temas[tema]).lower()
 
-print(mascarada)
+print(f"Tema escolhido: {tema}")
 
-while tentativas > 0:
-    digitar = input("Digite a palavra: ")
+# máscara da palavra
+mascara = ["_" if letra != " " else " " for letra in palavra]
 
-    if digitar == programa:
-        print("Parabéns Você ganhou! 🎉")
-        break
+print(" ".join(mascara))
+
+tentativas = 10
+usadas = []
+
+while tentativas > 0 and "_" in mascara:
+    digitar = input("Digite uma letra: ").lower()
+
+    if digitar in usadas:
+        print("Você já tentou isso")
+        continue
+
+    usadas.append(digitar)
+
+    if digitar in palavra:
+        print("Boa! tem essa letra")
+
+
+        for i in range(len(palavra)):
+            if palavra[i] == digitar:
+                mascara[i] = digitar
+
     else:
         tentativas -= 1
         print(f"Errado Restam {tentativas} chances!")
 
-if tentativas == 0:
-    print(f"Você perdeu A palavra era: {programa}")
+    print(" ".join(mascara))
 
+if "_" not in mascara:
+    print("Você ganhou! palavra:", palavra)
+else:
+    print("Você perdeu! palavra era:", palavra)
 
 print("----------------------------")
