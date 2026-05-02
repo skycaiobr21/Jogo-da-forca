@@ -1,6 +1,81 @@
 import random
+tentativas = 10
 
-palavras = [
+print("----------------------------")
+
+tema = ["programação", "jogos", "marcas"]
+tema = random.choice(tema)
+
+print(f"Tema escolhido: {tema}")
+
+jogos = [
+    "minecraft", "roblox", "fortnite", "valorant", "csgo",
+    "gta", "gta 5", "league of legends", "dota", "overwatch",
+    "apex", "pubg", "free fire", "call of duty", "warzone",
+    "fifa", "efootball", "pes", "rocket league", "terraria",
+    "stardew valley", "hollow knight", "undertale", "cuphead", "among us",
+    "brawl stars", "clash royale", "clash of clans", "mobile legends", "genshin impact",
+    "elden ring", "dark souls", "sekiro", "bloodborne", "skyrim",
+    "cyberpunk", "hades", "dead cells", "minecraft dungeons", "the witcher 3",
+    "assassins creed", "red dead redemption", "far cry", "resident evil", "silent hill",
+    "batman arkham", "spider man", "god of war", "halo infinite", "halo"
+]
+
+jogo = random.choice(jogos)
+
+mascarada = "*" * len(jogo)
+
+print(mascarada)
+
+while tentativas > 0:
+    digitar = input("Digite a palavra: ")
+
+    if digitar == jogo:
+        print("Parabéns Você ganhou! 🎉")
+        break
+    else:
+        tentativas -= 1
+        print(f"Errado Restam {tentativas} chances!")
+
+if tentativas == 0:
+    print(f"Você perdeu A palavra era: {jogo}")
+
+marcas = [
+    "nike", "adidas", "puma", "reebok", "vans",
+    "apple", "samsung", "xiaomi", "motorola", "huawei",
+    "google", "microsoft", "amazon", "netflix", "spotify",
+    "intel", "amd", "nvidia", "asus", "dell",
+    "hp", "lenovo", "logitech", "corsair", "razer",
+    "gucci", "prada", "chanel", "louisvuitton", "versace",
+    "zara", "h&m", "uniqlo", "lacoste", "tommyhilfiger",
+    "bmw", "audi", "mercedes", "tesla", "toyota",
+    "honda", "ford", "chevrolet", "ferrari", "lamborghini",
+    "cocacola", "pepsi", "nestle", "mcdonalds", "burgerking"
+]
+
+marca = random.choice(marcas)
+
+mascarada = "*" * len(marca)
+
+print(mascarada)
+
+while tentativas > 0:
+    digitar = input("Digite a palavra: ")
+
+    if digitar == marca:
+        print("Parabéns Você ganhou! 🎉")
+        break
+    else:
+        tentativas -= 1
+        print(f"Errado Restam {tentativas} chances!")
+
+if tentativas == 0:
+    print(f"Você perdeu A palavra era: {marca}")
+
+
+print("----------------------------")
+
+programação = [
     "código",
     "pixel", "algoritmo",
     "programação", "computador", "internet", "teclado", "mouse",
@@ -12,18 +87,16 @@ palavras = [
     "condição", "biblioteca", "framework", "api", "git"
 ]
 
-palavra = random.choice(palavras)
+programa = random.choice(programação)
 
-mascarada = "*" * len(palavra)
+mascarada = "*" * len(programa)
 
 print(mascarada)
-
-tentativas = 10
 
 while tentativas > 0:
     digitar = input("Digite a palavra: ")
 
-    if digitar == palavra:
+    if digitar == programa:
         print("Parabéns Você ganhou! 🎉")
         break
     else:
@@ -31,4 +104,7 @@ while tentativas > 0:
         print(f"Errado Restam {tentativas} chances!")
 
 if tentativas == 0:
-    print(f"Você perdeu A palavra era: {palavra}")
+    print(f"Você perdeu A palavra era: {programa}")
+
+
+print("----------------------------")
